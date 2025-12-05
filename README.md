@@ -1,23 +1,61 @@
-﻿# pz8-mongo
-Реализация CRUD-операций для коллекции заметок (`notes`) с использованием Go и MongoDB.
+﻿# Практическое занятие №8 - Работа с MongoDB в Go
 
+## Описание
+Этот проект демонстрирует работу с MongoDB — документно-ориентированной NoSQL базой данных. Реализован REST API для управления заметками с полным набором CRUD-операций, пагинацией и поиском.
 
- Требования
+## Цели
+ - Понять базовые принципы документной БД MongoDB (документ, коллекция, BSON, ObjectID)
+ - Научиться подключаться к MongoDB из Go с использованием официального драйвера
+ - Создать коллекцию, индексы и реализовать CRUD для сущности заметок
+ - Отработать фильтрацию, пагинацию, обновления, удаление и обработку ошибок
+
+## Архитектура проекта
+
+![alt text](public/Estructura.png)
+
+## Установка и старт
+1. Предварительные требования
 - **Go** версии 1.21 или выше  
 - **Docker** и **Docker Compose**  
 - **curl**, **Postman** или аналог для тестирования API
 
-Установка
+2. Настройка проекта
+```go
+# Клонирование и настройка
+mkdir pz8-mongo && cd pz8-mongo
 
-```bash
-git clone https://github.com/ybotet/pz6-gorm.git
-удаление go run ./cmd/server
+# Инициализация Go модуля
+go mod init example.com/pz8-mongo
+
+# Установка зависимостей
+go get github.com/go-chi/chi/v5
+go get go.mongodb.org/mongo-driver/mongo
+go get go.mongodb.org/mongo-driver/bson
+
+# Настройка переменных окружения
+cp .env.example .env
 ```
 
+3. Запуск MongoDB через Docker
+```go
+# Запуск MongoDB
+docker compose up -d
+
+# Проверка работы MongoDB
+docker compose ps
+```
+
+4. Запуск приложения
+```bash
+# Запуск API сервера
+go run ./cmd/api
+```
+
+
 скриншоты
-<img width="1133" height="506" alt="Captura de pantalla 2025-10-30 042132" src="https://github.com/user-attachments/assets/1e6fe2c6-ef00-45cb-b35f-f4d31a8d3288" />
-<img width="1141" height="164" alt="Captura de pantalla 2025-10-30 042355" src="https://github.com/user-attachments/assets/aafcb203-0678-4046-a758-2f2313fe9d7f" />
-<img width="1128" height="195" alt="Captura de pantalla 2025-10-30 044618" src="https://github.com/user-attachments/assets/07d05d8d-e6ae-4bfa-be93-ea7e7ae4da67" />
+![alt text](public/1.png) 
+![alt text](public/2.png) 
+![alt text](public/3.png)
 
 
 
